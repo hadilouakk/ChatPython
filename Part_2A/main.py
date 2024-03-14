@@ -1,24 +1,20 @@
 from flask import Flask, render_template
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO,send
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
-socketio = SocketIO(app)
+app= Flask(__name__)
+app.config['SECRET']="secret!123"
+socketio = SocketIO(app,cors_allowed_origins="*")
 
+
+@socketio.on('message')
+def handle_message(message):
+    print('message reçu: ' + message)
+    if message != "Utilisateur connecté":
+        send(message,broadcast="True")
 
 @app.route('/')
-def sessions():
-    return render_template('session.html')
-
-def messageReceived(methods=['GET', 'POST']):
-    print('message was received!!!')
-
-@socketio.on('my event')
-def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print('received my event: ' + str(json))
-    socketio.emit('my response', json, callback=messageReceived)
-
-
+def index():
+    return render_template("session.html")
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app,host="192.168.128.1")
