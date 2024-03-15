@@ -69,11 +69,6 @@
     <script>
         const socket = io();
 
- 
-
-    function getUsername() {
-        return document.getElementById('username').value;
-    }
     function sendMessage() {
             const message = document.getElementById('message').value;
             const username = document.getElementById('username').value;
@@ -93,14 +88,6 @@
         chatArea.scrollTop = chatArea.scrollHeight;
     });
         
-
-         socket.on('message', function(message) {
-            const chatArea = document.getElementById('chat-area');
-            const p = document.createElement('p');
-            p.textContent =message;
-            chatArea.appendChild(p);
-            chatArea.scrollTop = chatArea.scrollHeight;
-        });
     </script>
 </body>
 </html>

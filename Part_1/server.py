@@ -1,7 +1,7 @@
 import socket 
 import threading
 
-host = '192.168.128.1'
+host = '192.168.235.131'
 port = 59000
 
 #Creation connexion TCP avec socket
@@ -47,12 +47,12 @@ def receive():
         client.send('nickname ?'.encode('utf-8'))
 
         #On recupere la reponse du client
-        nickname = client.recv(1024)
+        nickname = client.recv(1024).decode("utf-8")
         nicknames.append(nickname)
         clients.append(client)
         
         #On affiche le nom du client connecté 
-        print(f'{nickname}is connected '.encode('utf-8'))
+        print(f'{nickname} is connected '.encode('utf-8'))
 
         #On affiche dans le terminal du client qu'il est connecté
         client.send("you are connected ".encode('utf-8'))
