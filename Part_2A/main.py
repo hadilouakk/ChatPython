@@ -17,4 +17,4 @@ def index():
     return render_template("session.html")
 
 if __name__ == '__main__':
-    socketio.run(app,host="192.168.128.1")
+    socketio.run(app,host="192.168.235.135")
