@@ -32,7 +32,6 @@ def handle_client(client):
             clients.remove(client)
             client.close()
             nickname= nicknames[index]
-            broadcast(f'{nickname} has left'.encode('utf-8'))
             nicknames.remove(nickname)
             break
 
@@ -58,8 +57,8 @@ def receive():
         #On affiche dans le terminal du client qu'il est connecté
         client.send("you are connected ".encode('utf-8'))
         
-        #thread = threading.Thread(target = handle_client, args = (client,))
-        #thread.start()
+        thread = threading.Thread(target = handle_client, args = (client,))
+        thread.start()
 
 receive()
 

@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO,send
 
-app= Flask(__name__)
-app.config['SECRET']="secret!123"
+app = Flask(__name__)
+app.config['SECRET']="xedfhyt"
 socketio = SocketIO(app,cors_allowed_origins="*")
 
 
@@ -17,4 +17,4 @@ def index():
     return render_template("session.html")
 
 if __name__ == '__main__':
-    socketio.run(app,host="192.168.128.1")
+    socketio.run(app,host="172.20.10.4")
